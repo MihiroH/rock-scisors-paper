@@ -1,0 +1,41 @@
+body {
+  padding: 80px; }
+
+.result {
+  width: 500px;
+  margin: auto;
+  border: 1px solid #000; }
+
+.img {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  background-position: center;
+  background-size: cover; }
+
+.text {
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center; }
+
+.self {
+  width: 500px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0; }
+  .self li {
+    width: 30%;
+    padding: 6px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    background: #fff;
+    list-style: none; }
+    .self li.is-active {
+      background: #f00;
+      color: #fff;
+      border: 1px solid #f00; }
+
+/*# sourceMappingURL=style.css.map */

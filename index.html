@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="result">
+    <div class="img"></div>
+    <p class="text"></p>
+  </div>
+  <ul class="self">
+    <li data-rps="0">グー</li>
+    <li data-rps="1">チョキ</li>
+    <li data-rps="2">パー</li>
+  </ul>
+
+  <script>
+    const hisResult = () => {
+      const rockPaperScisors = [
+        {
+          id: 0,
+          name: 'rock',
+          img: 'gu.png'
+        },
+        {
+          id: 1,
+          name: 'scisors',
+          img: 'tyoki.png'
+        },
+        {
+          id: 2,
+          name: 'paper',
+          img: 'pa.png'
+        }
+      ]
+      const hisNumber = [0, 1, 2]
+      const index = hisNumber[Math.floor(Math.random() * hisNumber.length)]
+      const result = rockPaperScisors[index]
+      return result
+    }
+
+    const rockPaperScisors = (rps, hisRps) => {
+      const win = 'you win'
+      const lose = 'you lose'
+
+      if (rps === hisRps) {
+        return 'one more time'
+      }
+      if (rps === (hisRps - 1)) {
+        return win
+      }
+      if ((rps - 1) === hisRps) {
+        return lose
+      }
+      if (rps === 2 && hisRps === 0) {
+        return win
+      }
+      if (rps === 0 && hisRps === 2) {
+        return lose
+      }
+      console.error('no result')
+      return ''
+    }
+
+    const btns = document.querySelectorAll('.self li')
+    btns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        const self = e.currentTarget
+        const rps = Number(self.getAttribute('data-rps'))
+        const _hisResult = hisResult()
+        const hisRps = _hisResult.id
+
+        const text = document.querySelector('.text')
+        const img = document.querySelector('.img')
+        text.innerText = rockPaperScisors(rps, hisRps)
+        img.style.backgroundImage =  `url(/assets/img/${_hisResult.img})`
+        btns.forEach(_btn => {
+          _btn.classList.remove('is-active')
+        })
+        self.classList.add('is-active')
+      })
+    })
+  </script>
+</body>
+</html>
